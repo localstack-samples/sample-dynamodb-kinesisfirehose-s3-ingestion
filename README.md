@@ -54,7 +54,7 @@ We specified DEBUG=1 to get the printed LocalStack logs directly in the terminal
 
 ### Installing the dependencies
 
-You can install and build the code in `pattern/aws-dynamodb-kinesisstreams-s3` and `sample-application` directories using the following commands:
+You can install and build the code in `pattern/aws-dynamodb-kinesisstreams-s3` and the root directories using the following commands:
 
 ```bash
 pushd pattern/aws-dynamodb-kinesisstreams-s3
@@ -62,22 +62,20 @@ npm install
 npm run build
 popd
 
-cd sample-application
 npm install
 npm run build
-popd
 ```
 
-This will install & build the AWS CDK L3 construct `aws-dynamodb-kinesisstreams-s3` and finally install/build the sample application under `sample-application`.
+This will install & build the AWS CDK L3 construct `aws-dynamodb-kinesisstreams-s3` and finally install/build the sample application.
 
 ### Deploying the infrastructure
 
 To create the AWS infrastructure locally, you can use CDK and `cdklocal` wrapper. To deploy the infrastructure, you can run the following command from the `sample-application` directory:
 
 ```bash
-pushd sample-application
 cdklocal bootstrap
 cdklocal deploy
+popd
 ```
 
 This will deploy the `AwsDynamodbKinesisfirehoseS3IngestionStack` stack on LocalStack. You will see the following output:
