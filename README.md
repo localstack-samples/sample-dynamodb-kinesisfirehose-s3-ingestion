@@ -44,7 +44,7 @@ We are using the following AWS services and their features to build our infrastr
 Start the LocalStack Pro container via the following command:
 
 ```shell
-export LOCALSTACK_API_KEY=<YOUR_API_KEY>
+export LOCALSTACK_AUTH_TOKEN=<YOUR_AUTH_TOKEN>
 DEBUG=1 localstack start
 ```
 
