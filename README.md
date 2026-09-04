@@ -37,9 +37,9 @@ We are using the following AWS services and their features to build our infrastr
 
 ## Prerequisites
 
-- A valid [LocalStack for AWS license](https://localstack.cloud/pricing). Your license provides a [`LOCALSTACK_AUTH_TOKEN`](https://docs.localstack.cloud/getting-started/auth-token/) to activate LocalStack.
-- [`localstack` CLI](https://docs.localstack.cloud/getting-started/installation/#localstack-cli).
-- [Cloud Development Kit](https://docs.localstack.cloud/user-guide/integrations/aws-cdk/) with the [`cdklocal`](https://www.npmjs.com/package/aws-cdk-local) installed.
+- A valid [LocalStack for AWS license](https://localstack.cloud/pricing). Your license provides a [`LOCALSTACK_AUTH_TOKEN`](https://docs.localstack.cloud/aws/getting-started/auth-token/) to activate LocalStack.
+- [`lstk` CLI](https://docs.localstack.cloud/aws/developer-tools/running-localstack/lstk/).
+- [Cloud Development Kit](https://docs.localstack.cloud/user-guide/integrations/aws-cdk/) installed, deployed via the `lstk cdk` proxy.
 - [Node.js](https://nodejs.org/en/download), and [`yarn`](https://yarnpkg.com/).
 
 ## Start LocalStack
@@ -49,10 +49,9 @@ Start LocalStack with the `LOCALSTACK_AUTH_TOKEN` pre-configured:
 ```shell
 export LOCALSTACK_AUTH_TOKEN=<your-auth-token>
 make start
-make ready
 ```
 
-We specified `DEBUG=1` to get the printed LocalStack logs directly in the terminal to help us visualize the background tasks in action. If you prefer running LocalStack in detached mode, you can add the `-d` flag to the `localstack start` command, and use Docker Desktop to view the logs.
+We specified `DEBUG=1` to get the printed LocalStack logs directly in the terminal to help us visualize the background tasks in action. `lstk` always runs LocalStack in the background; use `lstk logs` or Docker Desktop to view the logs.
 
 ## Instructions
 
@@ -74,11 +73,11 @@ This will install & build the AWS CDK L3 construct `aws-dynamodb-kinesisstreams-
 
 ### Deploying the infrastructure
 
-To create the AWS infrastructure locally, you can use CDK and `cdklocal` wrapper. To deploy the infrastructure, you can run the following command from the `sample-application` directory:
+To create the AWS infrastructure locally, you can use CDK and the `lstk cdk` proxy. To deploy the infrastructure, you can run the following command from the `sample-application` directory:
 
 ```bash
-cdklocal bootstrap
-cdklocal deploy
+lstk cdk bootstrap
+lstk cdk deploy
 popd
 ```
 
