@@ -19,4 +19,7 @@ stop:		## Stop LocalStack
 logs:		## Save the logs in a separate file
 	@lstk logs > logs.txt
 
-.PHONY: usage install start stop logs
+test:		## Post a record through the API and check it lands in S3
+	./test.sh
+
+.PHONY: usage install start stop logs test
